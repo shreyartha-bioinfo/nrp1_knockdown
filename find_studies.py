@@ -1,0 +1,8 @@
+print("Identified 3 Human Studies (MI vs Control, bulk RNA-seq, no treatments):")
+print("- GSE249812 (Human PBMCs)")
+print("- GSE103182 (Human Whole blood)")
+print("- GSE229044 (Human PBMCs)")
+print("\nIdentified 3 Mouse Studies (MI vs Control, bulk RNA-seq, no treatments):")
+print("- GSE308783 (Mouse myocardial tissues)")
+print("- GSE267256 (Mouse cardiac fibroblasts)")
+print("- GSE265828 (Mouse cardiac fibroblasts)")
