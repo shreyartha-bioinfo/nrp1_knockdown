@@ -14,13 +14,13 @@ studies = {
     }
 }
 
-os.makedirs("data_raw", exist_ok=True)
+os.makedirs("data/raw", exist_ok=True)
 for sp, d in studies.items():
     for gse, url in d.items():
         filename = url.split('/')[-1]
         print(f"Downloading {gse}...")
         try:
-            urllib.request.urlretrieve(url, f"data_raw/{gse}_{filename}")
+            urllib.request.urlretrieve(url, f"data/raw/{gse}_{filename}")
             print(f"Downloaded {gse}")
         except Exception as e:
             print(f"Failed {gse}: {e}")
@@ -29,6 +29,6 @@ import urllib.request
 # Ensure we have a third human dataset in the automated scripts
 try:
     print("Downloading GSE154294...")
-    urllib.request.urlretrieve('ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE154nnn/GSE154294/suppl/GSE154294_combined.count.tab.gz', 'data_raw/GSE154294.tab.gz')
+    urllib.request.urlretrieve('ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE154nnn/GSE154294/suppl/GSE154294_combined.count.tab.gz', 'data/raw/GSE154294.tab.gz')
 except Exception as e:
     print(f"Failed GSE154294: {e}")

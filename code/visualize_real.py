@@ -7,8 +7,8 @@ import os
 import glob
 from sklearn.decomposition import PCA
 
-os.makedirs('figures', exist_ok=True)
-files = glob.glob('data_processed/*.csv')
+os.makedirs('results/figures', exist_ok=True)
+files = glob.glob('data/processed/*.csv')
 
 fig_count = 0
 
@@ -64,7 +64,7 @@ for f in files:
         weights = [abs(e[2]['weight']) * 2 for e in edges]
         nx.draw(G, pos, with_labels=True, node_color=node_colors, node_size=1500, font_size=9, width=weights, edge_color='gray')
         plt.title(f'Network for {gse} (Threshold > 0.5)')
-        plt.savefig(f'figures/network_{gse}.png')
+        plt.savefig(f'results/figures/network_{gse}.png')
         plt.close()
         fig_count += 1
 
@@ -74,7 +74,7 @@ for f in files:
         sns.heatmap(pairwise_corr, cmap='coolwarm', vmin=-1, vmax=1)
         plt.title(f'Correlation Heatmap - {gse}')
         plt.tight_layout()
-        plt.savefig(f'figures/heatmap_{gse}.png')
+        plt.savefig(f'results/figures/heatmap_{gse}.png')
         plt.close()
         fig_count += 1
 
@@ -87,7 +87,7 @@ for f in files:
         plt.title(f'PCA of top correlated genes ({gse})')
         plt.xlabel(f'PC1 ({pca.explained_variance_ratio_[0]:.2%} var)')
         plt.ylabel(f'PC2 ({pca.explained_variance_ratio_[1]:.2%} var)')
-        plt.savefig(f'figures/pca_{gse}.png')
+        plt.savefig(f'results/figures/pca_{gse}.png')
         plt.close()
         fig_count += 1
     except:
@@ -99,7 +99,7 @@ for f in files:
                               'Gene': ['NRP1']*df.shape[1] + ['VEGFB']*df.shape[1]})
     sns.violinplot(x='Gene', y='Expression', data=plot_data, inner="point")
     plt.title(f'Expression Distribution in {gse}')
-    plt.savefig(f'figures/violin_{gse}.png')
+    plt.savefig(f'results/figures/violin_{gse}.png')
     plt.close()
     fig_count += 1
 
@@ -107,7 +107,7 @@ for f in files:
     plt.figure(figsize=(6, 5))
     sns.regplot(x=df.loc['NRP1'], y=df.loc['VEGFB'])
     plt.title(f'NRP1 vs VEGFB in {gse}')
-    plt.savefig(f'figures/scatter_{gse}_NRP1_VEGFB.png')
+    plt.savefig(f'results/figures/scatter_{gse}_NRP1_VEGFB.png')
     plt.close()
     fig_count += 1
 
@@ -117,15 +117,15 @@ for f in files:
         plt.figure(figsize=(5, 4))
         sns.regplot(x=df.loc['NRP1'], y=df.loc[g], color='green')
         plt.title(f'{gse}: NRP1 vs {g}')
-        plt.savefig(f'figures/scatter_{gse}_NRP1_vs_{g}.png')
+        plt.savefig(f'results/figures/scatter_{gse}_NRP1_vs_{g}.png')
         plt.close()
         fig_count += 1
 
         plt.figure(figsize=(5, 4))
         sns.regplot(x=df.loc['VEGFB'], y=df.loc[g], color='orange')
         plt.title(f'{gse}: VEGFB vs {g}')
-        plt.savefig(f'figures/scatter_{gse}_VEGFB_vs_{g}.png')
+        plt.savefig(f'results/figures/scatter_{gse}_VEGFB_vs_{g}.png')
         plt.close()
         fig_count += 1
 
-print(f"Generated a total of {fig_count} diverse, meaningful figures using local correlations.")
+print(f"Generated a total of {fig_count} diverse, meaningful results/figures using local correlations.")
