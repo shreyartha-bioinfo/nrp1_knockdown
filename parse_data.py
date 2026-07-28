@@ -65,3 +65,11 @@ df_304427 = df_304427.groupby('Official_Symbol')[cols].mean()
 df_304427.to_csv('data_processed/GSE304427.csv')
 
 print("All real data parsing complete.")
+# 7. GSE154294 (Human)
+print("Processing GSE154294")
+df_154294 = pd.read_csv('data_raw/GSE154294.tab.gz', sep='\t')
+df_154294 = df_154294.dropna(subset=['gene_symbol'])
+df_154294['gene_symbol'] = df_154294['gene_symbol'].str.upper()
+cols = [c for c in df_154294.columns if c != 'gene_symbol']
+df_154294 = df_154294.groupby('gene_symbol')[cols].mean()
+df_154294.to_csv('data_processed/GSE154294.csv')

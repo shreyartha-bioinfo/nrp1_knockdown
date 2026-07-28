@@ -24,3 +24,11 @@ for sp, d in studies.items():
             print(f"Downloaded {gse}")
         except Exception as e:
             print(f"Failed {gse}: {e}")
+import urllib.request
+
+# Ensure we have a third human dataset in the automated scripts
+try:
+    print("Downloading GSE154294...")
+    urllib.request.urlretrieve('ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE154nnn/GSE154294/suppl/GSE154294_combined.count.tab.gz', 'data_raw/GSE154294.tab.gz')
+except Exception as e:
+    print(f"Failed GSE154294: {e}")
