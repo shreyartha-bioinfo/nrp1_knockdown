@@ -4,7 +4,7 @@ import os
 import warnings
 warnings.filterwarnings('ignore')
 
-files = glob.glob('data_processed/*.csv')
+files = glob.glob('data/processed/*.csv')
 
 all_corrs = []
 
@@ -35,7 +35,7 @@ avg_corr['Combined_Score'] = (avg_corr['NRP1_corr'] + avg_corr['VEGFB_corr']) / 
 
 avg_corr = avg_corr.sort_values(by='Combined_Score', ascending=False)
 avg_corr = avg_corr.dropna()
-avg_corr.to_csv('correlation_results.csv')
+avg_corr.to_csv('results/correlation_results.csv')
 
 print("Top 10 correlated genes with both NRP1 and VEGFB (Real Data):")
 print(avg_corr.head(10))
