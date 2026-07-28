@@ -2,6 +2,8 @@
 
 This report compiles all diverse, meaningful visualizations generated from analyzing bulk RNA-seq data across 3 human and 3 mouse GEO studies of Myocardial Infarction.
 
+Note: We attempted to add MI vs Control labels using `GEOparse`, but the supplementary expression matrices use arbitrary column names (e.g. WT_Con1 or #12012) instead of the standard GSM sample IDs. This makes it impossible to automatically map the clinical metadata to the columns using GEOparse without manually inspecting each paper to map the arbitrary columns back to the GSM IDs.
+
 ## Dataset Analysis: GSE103182
 
 ### PCA
